@@ -103,6 +103,7 @@ import org.schabi.newpipe.util.ShareUtils;
 
 import java.util.List;
 
+import static org.schabi.newpipe.extractor.ServiceList.YouTube;
 import static org.schabi.newpipe.player.MainPlayer.ACTION_CLOSE;
 import static org.schabi.newpipe.player.MainPlayer.ACTION_FAST_FORWARD;
 import static org.schabi.newpipe.player.MainPlayer.ACTION_FAST_REWIND;
@@ -889,10 +890,17 @@ public class VideoPlayerImpl extends VideoPlayer
     private void onShareClicked() {
         // share video at the current time (youtube.com/watch?v=ID&t=SECONDS)
         // Timestamp doesn't make sense in a live stream so drop it
-        final String ts = isLive() ? "" : ("&t=" + (getPlaybackSeekBar().getProgress() / 1000));
+
+        final int ts = getPlaybackSeekBar().getProgress() / 1000;
+        final MediaSourceTag metadata = getCurrentMetadata();
+        String videoUrl = getVideoUrl();
+        if (!isLive() && ts >= 0 && metadata != null
+                && metadata.getMetadata().getServiceId() == YouTube.getServiceId()) {
+            videoUrl += ("&t=" + ts);
+        }
         ShareUtils.shareUrl(service,
                 getVideoTitle(),
-                getVideoUrl() + ts);
+                videoUrl);
     }
 
     private void onPlayWithKodiClicked() {
@@ -1063,11 +1071,25 @@ public class VideoPlayerImpl extends VideoPlayer
 
     private void animatePlayButtons(final boolean show, final int duration) {
         animateView(playPauseButton, AnimationUtils.Type.SCALE_AND_ALPHA, show, duration);
-        if (playQueue.getIndex() > 0 || !show) {
-            animateView(playPreviousButton, AnimationUtils.Type.SCALE_AND_ALPHA, show, duration);
+
+        boolean showQueueButtons = show;
+        if (playQueue == null) {
+            showQueueButtons = false;
         }
-        if (playQueue.getIndex() + 1 < playQueue.getStreams().size() || !show) {
-            animateView(playNextButton, AnimationUtils.Type.SCALE_AND_ALPHA, show, duration);
+
+        if (!showQueueButtons || playQueue.getIndex() > 0) {
+            animateView(
+                playPreviousButton,
+                AnimationUtils.Type.SCALE_AND_ALPHA,
+                showQueueButtons,
+                duration);
+        }
+        if (!showQueueButtons || playQueue.getIndex() + 1 < playQueue.getStreams().size()) {
+            animateView(
+                playNextButton,
+                AnimationUtils.Type.SCALE_AND_ALPHA,
+                showQueueButtons,
+                duration);
         }
 
     }
