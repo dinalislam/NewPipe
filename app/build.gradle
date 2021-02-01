@@ -102,6 +102,7 @@ ext {
     groupieVersion = '2.8.1'
     markwonVersion = '4.6.0'
     googleAutoServiceVersion = '1.0-rc7'
+    mockitoVersion = '3.6.0'
 }
 
 configurations {
@@ -179,7 +180,7 @@ dependencies {
 
     // NewPipe dependencies
     // You can use a local version by uncommenting a few lines in settings.gradle
-    implementation 'com.github.TeamNewPipe:NewPipeExtractor:deb9af7bf53b3f8fd9d32322adae02df78d985ea'
+    implementation 'com.github.TeamNewPipe:NewPipeExtractor:bfa639950ef0540acb3c10a63f8199e06335b728'
     implementation "com.github.TeamNewPipe:nanojson:1d9e1aea9049fc9f85e68b43ba39fe7be1c1f751"
 
     implementation "org.jsoup:jsoup:1.13.1"
@@ -216,7 +217,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     implementation "com.xwray:groupie:${groupieVersion}"
-    implementation "com.xwray:groupie-kotlin-android-extensions:${groupieVersion}"
+    implementation "com.xwray:groupie-viewbinding:${groupieVersion}"
 
     implementation "de.hdodenhof:circleimageview:3.1.0"
     implementation "com.nostra13.universalimageloader:universal-image-loader:1.9.5"
@@ -235,7 +236,8 @@ dependencies {
     implementation "org.ocpsoft.prettytime:prettytime:4.0.6.Final"
 
     testImplementation 'junit:junit:4.13.1'
-    testImplementation 'org.mockito:mockito-core:3.6.0'
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.mockito:mockito-inline:${mockitoVersion}"
 
     androidTestImplementation "androidx.test.ext:junit:1.1.2"
     androidTestImplementation "androidx.room:room-testing:${androidxRoomVersion}"
