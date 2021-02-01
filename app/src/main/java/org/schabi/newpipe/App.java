@@ -22,11 +22,11 @@ import org.acra.config.CoreConfiguration;
 import org.acra.config.CoreConfigurationBuilder;
 import org.schabi.newpipe.extractor.NewPipe;
 import org.schabi.newpipe.extractor.downloader.Downloader;
+import org.schabi.newpipe.ktx.ExceptionUtils;
 import org.schabi.newpipe.report.ErrorActivity;
 import org.schabi.newpipe.report.ErrorInfo;
 import org.schabi.newpipe.report.UserAction;
 import org.schabi.newpipe.settings.SettingsActivity;
-import org.schabi.newpipe.util.ExceptionUtils;
 import org.schabi.newpipe.util.Localization;
 import org.schabi.newpipe.util.ServiceHelper;
 import org.schabi.newpipe.util.StateSaver;
@@ -93,9 +93,9 @@ public class App extends MultiDexApplication {
         SettingsActivity.initSettings(this);
 
         NewPipe.init(getDownloader(),
-                Localization.getPreferredLocalization(this),
-                Localization.getPreferredContentCountry(this));
-        Localization.init(getApplicationContext());
+            Localization.getPreferredLocalization(this),
+            Localization.getPreferredContentCountry(this));
+        Localization.initPrettyTime(Localization.resolvePrettyTime(getApplicationContext()));
 
         StateSaver.init(this);
         initNotificationChannels();
