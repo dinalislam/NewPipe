@@ -131,7 +131,6 @@
     <string name="filter">Filtre</string>
     <string name="refresh">Rafraîchir</string>
     <string name="clear">Effacer</string>
-    <string name="popup_resizing_indicator_title">Redimensionner</string>
     <string name="short_billion">G</string>
     <string name="use_external_video_player_summary">Le son peut être absent à certaines définitions</string>
     <string name="player_gesture_controls_summary">Utiliser des gestes pour contrôler la luminosité et le volume du lecteur</string>
@@ -659,4 +658,12 @@
     <string name="show_meta_info_summary">Désactivez cette option pour masquer les zones de méta-informations contenant des informations supplémentaires sur le créateur du flux, le contenu du flux ou une demande de recherche.</string>
     <string name="show_meta_info_title">Afficher les méta-infos</string>
     <string name="no_app_to_open_intent">Aucune application sur votre appareil ne peut ouvrir ceci</string>
+    <string name="chapters">Chapitres</string>
+    <string name="description_tab_description">Description</string>
+    <string name="related_streams_tab_description">Flux associés</string>
+    <string name="comments_tab_description">Commentaires</string>
+    <string name="show_description_summary">Désactiver pour masquer la description de la vidéo et les informations supplémentaires</string>
+    <string name="show_description_title">Afficher la description</string>
+    <string name="crash_the_app">Faire planter l\'application</string>
+    <string name="georestricted_content">Ce contenu n\'est pas disponible dans votre pays.</string>
 </resources>
