@@ -23,7 +23,7 @@ import com.google.android.exoplayer2.Player.RepeatMode;
 import com.google.android.exoplayer2.SeekParameters;
 import com.google.android.exoplayer2.text.CaptionStyleCompat;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
+import com.google.android.exoplayer2.trackselection.ExoTrackSelection;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.ResizeMode;
 import com.google.android.exoplayer2.util.MimeTypes;
@@ -180,10 +180,10 @@ public final class PlayerHelper {
      * if a candidate next video's url already exists in the existing items.
      * </p>
      * <p>
-     * The first item in {@link StreamInfo#getRelatedStreams()} is checked first.
+     * The first item in {@link StreamInfo#getRelatedItems()} is checked first.
      * If it is non-null and is not part of the existing items, it will be used as the next stream.
-     * Otherwise, a random item with non-repeating url will be selected
-     * from the {@link StreamInfo#getRelatedStreams()}.
+     * Otherwise, a random stream with non-repeating url will be selected
+     * from the {@link StreamInfo#getRelatedItems()}. Non-stream items are ignored.
      * </p>
      *
      * @param info          currently playing stream
@@ -198,7 +198,7 @@ public final class PlayerHelper {
             urls.add(item.getUrl());
         }
 
-        final List<InfoItem> relatedItems = info.getRelatedStreams();
+        final List<InfoItem> relatedItems = info.getRelatedItems();
         if (Utils.isNullOrEmpty(relatedItems)) {
             return null;
         }
@@ -323,7 +323,7 @@ public final class PlayerHelper {
         return 60000;
     }
 
-    public static TrackSelection.Factory getQualitySelector() {
+    public static ExoTrackSelection.Factory getQualitySelector() {
         return new AdaptiveTrackSelection.Factory(
                 1000,
                 AdaptiveTrackSelection.DEFAULT_MAX_DURATION_FOR_QUALITY_DECREASE_MS,
@@ -484,8 +484,9 @@ public final class PlayerHelper {
                 break;
         }
 
+        // save the new resize mode so it can be restored in a future session
         player.getPrefs().edit().putInt(
-                player.getContext().getString(R.string.last_resize_mode), resizeMode).apply();
+                player.getContext().getString(R.string.last_resize_mode), newResizeMode).apply();
         return newResizeMode;
     }
 
@@ -494,9 +495,7 @@ public final class PlayerHelper {
                 R.string.playback_speed_key), player.getPlaybackSpeed());
         final float pitch = player.getPrefs().getFloat(player.getContext().getString(
                 R.string.playback_pitch_key), player.getPlaybackPitch());
-        final boolean skipSilence = player.getPrefs().getBoolean(player.getContext().getString(
-                R.string.playback_skip_silence_key), player.getPlaybackSkipSilence());
-        return new PlaybackParameters(speed, pitch, skipSilence);
+        return new PlaybackParameters(speed, pitch);
     }
 
     public static void savePlaybackParametersToPrefs(final Player player,

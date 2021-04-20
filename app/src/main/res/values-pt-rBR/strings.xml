@@ -106,7 +106,7 @@
     <string name="use_tor_title">Usar Tor</string>
     <string name="user_report">Relatório do usuário</string>
     <string name="show_play_with_kodi_title">Mostrar \"Reproduzir com Kodi\"</string>
-    <string name="info_labels">Ocorrido:\\nPedido:\\nIdioma do conteúdo:\\nPaís do conteúdo:\\nIdioma do app:\\nServiço:\\nHora GMT:\\nPacote:\\nVersão:\\nVersão SO:</string>
+    <string name="info_labels">Ocorrido:\\nPedido:\\nIdioma do conteúdo:\\nPaís do conteúdo:\\nIdioma do app:\\nServiço:\\nHora GMT:\\nPacote:\\nVersão:\\nVersão da SO:</string>
     <string name="open_in_popup_mode">Abrir no modo popup</string>
     <string name="default_popup_resolution_title">Resolução padrão do popup</string>
     <string name="show_higher_resolutions_title">Mostrar resoluções maiores</string>
@@ -287,8 +287,8 @@
     <string name="delete_playlist">Excluir</string>
     <string name="rename_playlist">Renomear</string>
     <string name="name">Nome</string>
-    <string name="append_playlist">Adicionar à playlist</string>
-    <string name="set_as_playlist_thumbnail">Definir como capa da playlist</string>
+    <string name="append_playlist">Adicionar à Playlist</string>
+    <string name="set_as_playlist_thumbnail">Definir Como Capa da Playlist</string>
     <string name="bookmark_playlist">Favoritar playlist</string>
     <string name="unbookmark_playlist">Desfavoritar</string>
     <string name="delete_playlist_prompt">Excluir esta playlist\?</string>
@@ -656,11 +656,27 @@
     <string name="recent">Recentes</string>
     <string name="chapters">Capítulos</string>
     <string name="description_tab_description">Descrição</string>
-    <string name="related_streams_tab_description">Transmissões relacionadas</string>
+    <string name="related_items_tab_description">Transmissões relacionadas</string>
     <string name="comments_tab_description">Comentários</string>
     <string name="show_description_summary">Desative para ocultar a descrição do vídeo e informações adicionais</string>
     <string name="show_description_title">Mostrar descrição</string>
     <string name="open_with">Abrir com</string>
     <string name="no_app_to_open_intent">Nenhum aplicativo em seu dispositivo pode abrir isso</string>
     <string name="crash_the_app">O aplicativo parou</string>
+    <string name="paid_content">Este conteúdo está disponível apenas para usuários que pagaram, portanto não pode ser transmitido ou baixado pelo NewPipe.</string>
+    <string name="youtube_music_premium_content">Este vídeo está disponível apenas para assinantes do YouTube Music Premium, portanto, não pode ser transmitido ou baixado por NewPipe.</string>
+    <string name="private_content">Este conteúdo é privado, portanto não pode ser transmitido ou baixado pelo NewPipe.</string>
+    <string name="soundcloud_go_plus_content">Esta é uma faixa do SoundCloud Go +, pelo menos no seu país, portanto não pode ser transmitida ou baixada pelo NewPipe.</string>
+    <string name="georestricted_content">Este conteúdo não está disponível em seu país.</string>
+    <string name="restricted_video_no_stream">Este vídeo tem restrição de idade.
+\nDevido às novas políticas do YouTube sobre vídeos com restrição de idade, NewPipe não pode acessar nenhum vídeo do stream e, portanto, não pode reproduzi-lo.</string>
+    <string name="radio">Rádio</string>
+    <string name="featured">Destaque</string>
+    <string name="recaptcha_solve">Resolvido</string>
+    <string name="download_has_started">O download foi iniciado</string>
+    <string name="select_night_theme_toast">Você pode selecionar seu tema noturno favorito abaixo</string>
+    <string name="night_theme_summary">Selecione seu tema noturno favorito — %s</string>
+    <string name="auto_device_theme_title">Automático (tema do dispositivo)</string>
+    <string name="night_theme_title">Tema Noturno</string>
+    <string name="show_channel_details">Mostrar detalhes do canal</string>
 </resources>
